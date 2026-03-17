@@ -7,17 +7,18 @@
                         <h1>Our Products</h1>
                     </div>
                     <div class="col-lg-8 text-end wow fadeInRight" data-wow-delay="0.1s">
-                        {%for category in categories%}
+
                         <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                            {%for category in categories%}
                             <li class="nav-item mb-4">
                                 <a class="d-flex mx-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill"
-                                    href="#tab-1">
+                                    href="{% url 'category_by_product' category.slug %}">
                                     <span class="text-dark" style="width: 130px;">{{category.name}}</span>
                                 </a>
                             </li>
-
+                            {%endfor%}
                         </ul>
-                        {%endfor%}
+
                     </div>
                 </div>
                 <div class="tab-content">
@@ -29,10 +30,10 @@
                                 <div class="product-item rounded wow fadeInUp" data-wow-delay="0.1s">
                                     <div class="product-item-inner border rounded">
                                         <div class="product-item-inner-item">
-                                            <img src="{{product.get_image}}" alt="">
+                                            <img  src="{{product.get_image}}" class="img-fluid" alt="">
                                             <div class="product-new">New</div>
                                             <div class="product-details">
-                                                <a href="#"><i class="fa fa-eye fa-1x"></i></a>
+                                                <a href="{%url 'product_detail' product.slug%}"><i class="fa fa-eye fa-1x"></i></a>
                                             </div>
                                         </div>
 

@@ -867,3 +867,13 @@
     background: var(--bs-primary) !important;
 }
 /*** copyright end ***/
+
+.dropdown-menu {
+    z-index: 9999 !important;
+    display: none; /* Standart holatda yashirin */
+}
+
+.dropdown:hover > .dropdown-menu,
+.dropdown .show {
+    display: block; /* Bosilganda yoki sichqoncha borganda ko'rinishi uchun */
+}

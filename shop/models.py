@@ -29,10 +29,16 @@ class Product(models.Model):
         verbose_name='Mahsulot'
         verbose_name_plural='Mahsulotlar'
 
+    def get_image(self):
+        product_images = self.images.all()
+        if product_images:
+            return product_images[0].image.url
+        else:
+            return "https://img.freepik.com/free-vector/404-error-design-with-donut_23-2147739030.jpg?semt=ais_rp_50_assets&w=740&q=80"
 
 
 class ProductImage(models.Model):
-    product=models.ForeignKey(Product,on_delete=models.CASCADE,verbose_name='Mahsuloti')
+    product=models.ForeignKey(Product,on_delete=models.CASCADE,verbose_name='Mahsuloti',related_name='images')
     image=models.ImageField(upload_to='media/',verbose_name='Rasmi')
 
     def __str__(self):

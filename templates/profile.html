@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profil - Electro</title>
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+
+:root {
+    --primary: #ff6600;
+    --bg: #f5f7fa;
+    --text: #333;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Container */
+.profile-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* Header */
+.profile-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Layout */
+.profile-content {
+    display: flex;
+}
+
+/* Sidebar */
+.profile-sidebar {
+    width: 250px;
+    background: #fafafa;
+    border-right: 1px solid #eee;
+}
+
+.profile-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-sidebar li {
+    padding: 15px 20px;
+    cursor: pointer;
+    color: #555;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-sidebar li:hover {
+    background: #fff;
+    color: var(--primary);
+    padding-left: 25px;
+}
+
+.profile-sidebar li.active {
+    background: #fff;
+    color: var(--primary);
+    font-weight: 600;
+    border-left: 4px solid var(--primary);
+}
+
+/* Form */
+.profile-form {
+    flex: 1;
+    padding: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #777;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255,102,0,0.1);
+    outline: none;
+}
+
+/* Button */
+.save-btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.save-btn:hover {
+    background: #e65c00;
+    transform: translateY(-2px);
+}
+
+/* Logout */
+.logout {
+    color: red;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="profile-container">
+
+    <!-- Header -->
+    <div class="profile-header">
+        <h2>Mening Profilim</h2>
+        <a href="{% url 'home' %}" class="logout">
+            <i class="fas fa-sign-out-alt"></i> Chiqish
+        </a>
+    </div>
+
+    <div class="profile-content">
+
+
+        <!-- Form -->
+        <div class="profile-form">
+
+            <form method="POST">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>To'liq ismingiz</label>
+                    <input type="text" name="name" value="{{ user.username }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" value="{{ user.email }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="text" name="phone" placeholder="+998 90 123 45 67">
+                </div>
+
+                <button type="submit" class="save-btn">
+                    Saqlash
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

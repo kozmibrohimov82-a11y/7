@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+    <!-- Single Page Header start -->
+    <div class="container-fluid page-header py-5">
+        <h1 class="text-center text-white display-6">{{ product.name }}</h1>
+        <ol class="breadcrumb justify-content-center mb-0">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active text-white">Product Detail</li>
+        </ol>
+    </div>
+    <!-- Single Page Header End -->
+
+    <!-- Single Products Start -->
+    <div class="container-fluid shop py-5">
+        <div class="container py-5">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="border rounded p-4 text-center">
+                       <img  src="{{product.get_image}}" class="img-fluid" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-3">{{ product.name }}</h2>
+                    <p class="text-primary h4 fw-bold mb-4">${{ product.price }}</p>
+                    <p class="text-muted mb-4">{{ product.description }}</p>
+
+                    <button class="btn btn-primary rounded-pill px-4 py-2">
+                        <i class="fa fa-shopping-bag me-2 text-white"></i> Savatga qo'shish
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

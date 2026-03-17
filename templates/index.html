@@ -1,22 +1,13 @@
 {% extends 'base.html' %}
-
 {% block main %}
 
-    {%include 'components/_spinner_start.html'%}
-
-
-    {%include 'components/_topbar.html'%}
-
-
-    {%include 'components/_navbar.html'%}
 
     {%include 'components/_carousel.html'%}
-
     {%include 'components/_searvices.html'%}
-
     {%include 'components/_offer.html'%}
-
-
     {%include 'components/_our_product.html'%}
+    {%include 'components/_product_banner.html'%}
+    {%include 'components/_product_list.html'%}
+    {% include 'components/_bestseller_products.html' %}
 
 {% endblock main %}
